@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="css/login.css">
+
+<div class="row">
+	<div class="col-md-4"></div>
+
+	<div class="col-md-4">
+		<section class="login-form text-center">
+			<h3>Área restrita</h3>
+			<input type="text" name="username" placeholder="login" required class="form-control input-lg" ng-model="username" />
+
+			<input type="password" class="form-control input-lg" id="password" placeholder="senha" required="" ng-model="password" />
+
+
+			<div class="pwstrength_viewport_progress"></div>
+
+
+			<button name="go" class="btn btn-lg btn-primary btn-block" ng-click="login()">Entrar</button>
+			<div>
+				<a href="#">Esqueceu sua senha?</a>
+			</div>
+		</section>
+	</div>
+
+	<div class="col-md-4"></div>
+
+
+</div>

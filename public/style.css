@@ -742,6 +742,15 @@ p{
 	position: relative;
 	z-index: 0;
 }
+
+.boxed.nm {
+	margin-bottom: 0px !important;
+}
+
+.boxed .inner {
+	padding: 34px 32px 36px;
+}
+
 .line-left{border-left: 3px solid #ebc85e;}
 .line-top{border-top: 3px solid #ebc85e;}
 

@@ -7,7 +7,7 @@ module.exports = function(app, models) {
 
 	app.post('/auth/', function(req, res) {
 		models.user.find({
-			where: { email: req.body.username,
+			where: { email: req.body.email,
 					 password: req.body.password }
 		})
 		.on('success', function(record) {
@@ -40,7 +40,7 @@ module.exports = function(app, models) {
 			return;
 		}
 
-		models.usuarios.find({
+		models.user.find({
 			where: { email: auth[0] }
 		})
 		.on('success', function(user) {
@@ -48,7 +48,7 @@ module.exports = function(app, models) {
 			{
 				res.sendStatus(401);
 			}
-			else if (user.senha !== auth[1])
+			else if (user.password !== auth[1])
 			{
 				res.sendStatus(401);
 			}

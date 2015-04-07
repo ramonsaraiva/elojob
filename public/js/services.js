@@ -51,21 +51,9 @@ services.factory('AuthenticationService',
     function ($http, $cookieStore, $rootScope, $timeout) {
         var service = {};
 
-        service.Login = function (username, password, callback) {
+        service.Login = function (email, password, callback) {
 
-            /* Dummy authentication for testing, uses $timeout to simulate api call
-             ----------------------------------------------
-            $timeout(function(){
-                var response = { success: username === 'admin' && password === 'admin' };
-                if(!response.success) {
-                    response.message = 'Username or password is incorrect';
-                }
-                callback(response);
-            }, 1000);
-			*/
-
-
-            $http.post('/auth/', { username: username, password: password })
+            $http.post('/auth/', { email: email, password: password })
                 .success(function (response) {
 					var res = { success: true, record: response };
                     callback(res);
@@ -76,12 +64,13 @@ services.factory('AuthenticationService',
 				});
         };
  
-        service.SetCredentials = function (username, password) {
-            var authdata = username + ':' + password;
+        service.SetCredentials = function (id, email, password) {
+            var authdata = email + ':' + password;
  
             $rootScope.globals = {
                 currentUser: {
-                    username: username,
+					id: id,
+                    email: email,
                     authdata: authdata
                 }
             };

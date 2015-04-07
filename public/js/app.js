@@ -22,13 +22,17 @@ app.config(['$routeProvider', function($routeProvider) {
 		.when('/', {
 			templateUrl: 'partials/home.tpl.html'
 		})
-		.when('/login', {
+		.when('/entrar', {
 			templateUrl: 'partials/login.tpl.html',
 			controller: 'loginController'
 		})
 		.when('/cadastro', {
 			templateUrl: 'partials/cadastro.tpl.html',
 			controller: 'cadastroController'
+		})
+		.when('/encomenda', {
+			templateUrl: 'partials/encomenda.tpl.html',
+			controller: 'encomendaController'
 		})
 		.otherwise({
 			redirectTo: '/'
@@ -45,8 +49,8 @@ app.config(['$routeProvider', function($routeProvider) {
 
 			$rootScope.$on('$locationChangeStart', function (event, next, current) {
 				// redirect to login page if not logged in
-				if ($location.path() !== '/login' && $location.path() !== '/cadastro' && !$rootScope.globals.currentUser) {
-					$location.path('/login');
+				if ($location.path() !== '/entrar' && $location.path() !== '/cadastro' && !$rootScope.globals.currentUser) {
+					$location.path('/entrar');
 				}
 			});
 }]);

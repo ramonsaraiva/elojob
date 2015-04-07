@@ -14,7 +14,8 @@ module.exports = function(app) {
 	//require('../modules/*')(app, models);
 
 	require('./defaults/crud.js')(app, models);
-	require('./defaults/filter.js')(app, models);
+	//require('./defaults/filter.js')(app, models);
+	//require('./defaults/all.js')(app, models);
 
 	app.get('*', function(req, res) {
 		res.sendStatus(404);

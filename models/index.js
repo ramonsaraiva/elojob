@@ -14,7 +14,7 @@ var sequelize = new Sequelize(config.database, config.username, config.password,
 var models = {};
 
 fs.readdirSync(__dirname).filter(function(file) {
-	return (file.indexOf('.') !== 0) && (file !== 'index.js') && (file !== 'todo');
+	return (file.indexOf('.') !== 0) && (file !== 'index.js') && (file !== 'todo') && (file !== 'old');
 })
 .forEach(function(file) {
 	var model = sequelize.import(path.join(__dirname, file));

@@ -470,6 +470,8 @@ controllers.controller('loginController', ['$scope', '$rootScope', '$location', 
 	AuthenticationService.ClearCredentials();
 
 	$scope.login = function() {
+		$scope.error = false;
+
 		AuthenticationService.Login($scope.email, $scope.password, function(response) {
 			if (response.success)
 			{
@@ -479,8 +481,8 @@ controllers.controller('loginController', ['$scope', '$rootScope', '$location', 
 				}
 				else
 				{
-					AuthenticationService.SetCredentials($scope.username, $scope.password);
-					$location.path('/');
+					AuthenticationService.SetCredentials(response.record.id, response.record.email, response.record.password);
+					$location.path('/encomenda/');
 				}
 			}
 			else
@@ -489,6 +491,19 @@ controllers.controller('loginController', ['$scope', '$rootScope', '$location', 
 			}
 		});
 	};
+}]);
+
+controllers.controller('logoutController', ['$scope', '$location', 'AuthenticationService', function($scope, $location, AuthenticationService) {
+	AuthenticationService.ClearCredentials();
+	$location.path('/entrar');
+}]);
+
+controllers.controller('encomendaController', ['$scope', '$rootScope', 'db', function($scope, $rootScope, db) {
+	$scope.db = new db('user');
+	$scope.db.read($rootScope.globals.currentUser.id)
+		.success(function(data) {
+			$scope.user = data;
+		});
 }]);
 
 controllers.controller('cadastroController', ['$scope', function($scope) {

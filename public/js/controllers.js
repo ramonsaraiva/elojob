@@ -470,16 +470,26 @@ controllers.controller('loginController', ['$scope', '$rootScope', '$location', 
 	AuthenticationService.ClearCredentials();
 
 	$scope.login = function() {
-		AuthenticationService.Login($scope.username, $scope.password, function(response) {
+		AuthenticationService.Login($scope.email, $scope.password, function(response) {
 			if (response.success)
 			{
-				AuthenticationService.SetCredentials($scope.username, $scope.password);
-				$location.path('/');
+				if (response.status == 404)
+				{
+					$scope.error = true;
+				}
+				else
+				{
+					AuthenticationService.SetCredentials($scope.username, $scope.password);
+					$location.path('/');
+				}
 			}
 			else
 			{
-				alert(response.message);
+				$scope.error = true;
 			}
 		});
 	};
+}]);
+
+controllers.controller('cadastroController', ['$scope', function($scope) {
 }]);

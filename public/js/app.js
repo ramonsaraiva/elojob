@@ -20,36 +20,18 @@ app.config(['$routeProvider', function($routeProvider) {
 
 	$routeProvider
 		.when('/', {
-			redirectTo: '/usuarios'
+			templateUrl: 'partials/home.tpl.html'
 		})
 		.when('/login', {
 			templateUrl: 'partials/login.tpl.html',
 			controller: 'loginController'
 		})
-		.when('/usuarios', {
-			templateUrl: 'partials/module.tpl.html',
-			controller: 'module_controller',
-			resolve: {
-				config: function() {
-					return {
-						title: 'Usuários',
-						name: 'usuarios',
-						fields: [{
-							field: 'nome',
-							displayName: 'Nome'
-						}, {
-							field: 'senha',
-							displayName: 'Senha'
-						}, {
-							field: 'login',
-							displayName: 'Login'
-						}]
-					};
-				}
-			}
+		.when('/cadastro', {
+			templateUrl: 'partials/cadastro.tpl.html',
+			controller: 'cadastroController'
 		})
 		.otherwise({
-			redirectTo: '/usuarios'
+			redirectTo: '/'
 		});
 }])
 
@@ -63,7 +45,7 @@ app.config(['$routeProvider', function($routeProvider) {
 
 			$rootScope.$on('$locationChangeStart', function (event, next, current) {
 				// redirect to login page if not logged in
-				if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
+				if ($location.path() !== '/login' && $location.path() !== '/cadastro' && !$rootScope.globals.currentUser) {
 					$location.path('/login');
 				}
 			});

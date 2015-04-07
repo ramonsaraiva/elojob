@@ -1,18 +1,19 @@
-<!DOCTYPE html> <html lang="en" ng-app="app">
+<!doctype html>
+<!--[if lt IE 7 ]><html lang="en" class="no-js ie6" ng-app="app"> <![endif]-->
+<!--[if IE 7 ]><html lang="en" class="no-js ie7" ng-app="app"> <![endif]-->
+<!--[if IE 8 ]><html lang="en" class="no-js ie8" ng-app="app"> <![endif]-->
+<!--[if IE 9 ]><html lang="en" class="no-js ie9" ng-app="app"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en" class="no-js" ng-app="app"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<meta name="author" content="ThemeFuse">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>elo dos brodi</title>
 
-	<title>VTE</title>
-
-	<!-- scripts -->
-
-	<!-- jquery -->
+	<!-- main JS libs -->
+	<script src="/bower_components/modernizr/modernizr.js"></script>
 	<script src="/bower_components/jquery/dist/jquery.min.js"></script>
-
 	<!-- angular e seus modulos -->
 	<script src="/bower_components/angular/angular.min.js"></script>
 	<script src="/bower_components/angular-route/angular-route.min.js"></script>
@@ -22,57 +23,117 @@
 	<script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 	<script src="/bower_components/angular-cookies/angular-cookies.min.js"></script>
 
-	<!-- end of scripts -->
-
-	<!-- styles -->
 	<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/bower_components/angular-ui-select/dist/select.min.css">
 	<link rel="stylesheet" href="/bower_components/angular-grid/ng-grid.min.css">
-	<!-- end of styles -->
 
-	<!-- interno -->
 	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/services.js"></script>
 
-	<link rel="stylesheet" href="css/style.css">
-	<!-- Bootstrap Core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Custom CSS -->
-	<link href="css/sb-admin.css" rel="stylesheet">
+	<link href="style.css" media="screen" rel="stylesheet">
 
-	<!-- Morris Charts CSS -->
-	<link href="css/plugins/morris.css" rel="stylesheet">
+	<!-- scripts -->
+	<script src="general.js"></script>
 
-	<!-- Custom Fonts -->
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!-- custom input -->
+	<!--<script src="js/jquery.customInput.js"></script>
+	<script type="text/javascript" src="js/custom.js"></script>-->
+	<!-- Placeholders -->
+	<!--
+	 <script type="text/javascript" src="js/jquery.powerful-placeholder.min.js"></script>
+	 <!-- Progress Bars -->
+	 <script src="js/progressbar.js"></script>
+	 -->
+	 <!-- Graph Builder -->
+	 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	 <script type="text/javascript">
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+	var data = google.visualization.arrayToDataTable([
+			['Media', 'GB'],
+			['Audio', 1100],
+			['Video', 460],
+			['Photo', 340],
+			['Other', 100]
+	]);
 
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-	 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	 <![endif]-->
+	var options = {
+		pieHole: 0.4,
+		legend: 'none',
+		pieSliceText: 'none',
+		width: 220,
+		height: 220,
+		slices: {0: {color: '#4daf7b'}, 1: {color: '#e6623d'}, 2: {color: '#ebc85e'}, 3: {color: '#f4ede7'}},
+		chartArea:{left:"10px", top:"10px", width:"92%", height:"92%"}
+	};
 
+	var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+	chart.draw(data, options);
+
+	var data2 = google.visualization.arrayToDataTable([
+			['Month', 'Traffic'],
+			['June',  1100],
+			['July',  1580],
+			['August',  1300],
+			['September',  1430]
+	]);
+
+	var options2 = {
+		width: 220,
+		height: 220,
+		legend: 'none',
+		colors: ['#4daf7b'],
+		chartArea:{left:0, top:0, width:"100%", height:"100%"},
+		hAxis:{textPosition:"none", gridlines:{color:"#fff"}, baselineColor:"#4daf7b"},
+		vAxis:{textPosition:"none", gridlines:{color:"#fff"}, baselineColor:"#4daf7b"}
+	};
+
+	var chart2 = new google.visualization.ColumnChart(document.getElementById('columnchart'));
+	chart2.draw(data2, options2);
+}
+	 </script>
+
+	 <!--[if lt IE 9]><script src="js/respond.min.js"></script><![endif]-->
+	 <!--[if gte IE 9]>
+	  <style type="text/css">
+.gradient {filter: none !important;}
+	  </style>
+	  <![endif]-->
 </head>
 
 <body>
-	<div id="wrapper">
-		<!-- Navigation -->
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-include="'partials/navigation.tpl.html'"></nav>
-
-		<div id="page-wrapper">
-			<div class="container-fluid" ng-view></div>
+	<div class="title-box metro-vibes">
+		<div class="inner">
+			<h1>elo dos brodi</h1>
+			<p>você no elo que merece</p>
 		</div>
-		<!-- /#page-wrapper -->
-
 	</div>
-	<!-- /#wrapper -->
-
-	<!-- Morris Charts JavaScript -->
-	<script src="js/plugins/morris/raphael.min.js"></script>
-	<script src="js/plugins/morris/morris.min.js"></script>
-	<script src="js/plugins/morris/morris-data.js"></script>
+	<div class="container container-wide">
+			<!-- row -->
+			<div class="row">
+				<div class="col-sm-12">
+					<!-- Website Menu -->
+					<div id="topmenu">
+						<ul class="dropdown clearfix boxed">
+							<li class="menu-level-0"><a href="#"><i class="icon-menu"></i><span>nosso trabalho</span></a></li>
+							<li class="menu-level-0"><a href="#"><i class="icon-menu icon-menu2"></i><span>alcance seu merecido elo</span></a></li>
+							<li class="menu-level-0"><a href="#"><i class="icon-menu icon-menu6"></i><span>acompanhe em tempo real</span><sup class="note">3</sup></a> </li>
+							<li class="menu-level-0"><a ng-href="#/cadastro"><i class="icon-menu icon-menu3"></i><span>sua conta</span></a>
+								<ul class="submenu-1">
+									<li class="menu-level-1"><a href="#">Sair</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<!--/ Website Menu -->
+				</div>
+		</div>
+		<div class="content" role="main" ng-view>
+		</div>
+	</div>
+	<!--/ container -->
 </body>
 </html>

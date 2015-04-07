@@ -1,27 +1,101 @@
-<link rel="stylesheet" href="css/login.css">
-
 <div class="row">
-	<div class="col-md-4"></div>
-
-	<div class="col-md-4">
-		<section class="login-form text-center">
-			<h3>Área restrita</h3>
-			<input type="text" name="username" placeholder="login" required class="form-control input-lg" ng-model="username" />
-
-			<input type="password" class="form-control input-lg" id="password" placeholder="senha" required="" ng-model="password" />
-
-
-			<div class="pwstrength_viewport_progress"></div>
-
-
-			<button name="go" class="btn btn-lg btn-primary btn-block" ng-click="login()">Entrar</button>
-			<div>
-				<a href="#">Esqueceu sua senha?</a>
-			</div>
-		</section>
+<div class="col-sm-6">
+	<div class="alert boxed alert-error fade in" ng-show="error">
+		<div class="alert-body">
+			<span> ooops :(</span>
+			<p>deu algo de errado no teu login! o email e a senha estão certinhos?</p>
+		</div>
+		<span class="alert-label"></span>
+		<a style="outline: medium none;" hidefocus="true" href="#" class="close" data-dismiss="alert">close</a>
 	</div>
+	<div class="widget-container widget_login styled boxed">
+		<form action="#" method="post" id="loginform" class="loginform">
+			<div class="inner">
+				<h6>entraí parça</h6>
+				<div class="field_text">
+					<label for="user_login" class="label_title">seu email</label>
+					<input style="outline: medium none;" hidefocus="true" name="log" id="email" class="required" value="" placeholder="aranguejo@dibrador.com" type="text" ng-model="email">
+					<span class="input_icon input_email"></span>
+				</div>
+				<div class="field_text">
+					<label for="user_pass" class="label_title">sua senha</label>
+					<input style="outline: medium none;" hidefocus="true" name="pwd" id="password" class="required" value="" placeholder="s3nh4s3cr3t4" type="password" ng-model="password">
+					<span class="input_icon input_pass"></span>
+				</div>
+			</div>
+			<div class="rowSubmit">
+				<div class="row">
+					<div class="col-sm-6">
+						<a style="outline: medium none;" hidefocus="true" href="#" class="btn" ng-click="login()"><span class="gradient" id="login-submit">entrar</span></a>
+					</div>
+					<div class="col-sm-6">
+						<a style="outline: medium none;" hidefocus="true" ng-href="#/cadastro" class="btn btn-green"><span class="gradient" >criar uma conta</span></a>
+					</div>
+				</div>
 
-	<div class="col-md-4"></div>
-
-
+				<div class="rowRemember">
+					<span class="forget_password"><a style="outline: medium none;" hidefocus="true" href="#">esqueceu a senha? meça suas memórias</a></span>
+					<input style="outline: medium none;" hidefocus="true" name="redirect_to" value="" type="hidden">
+					<input style="outline: medium none;" hidefocus="true" name="testcookie" value="1" type="hidden">
+				</div>
+			</div>
+			<div class="rowSocial"><a style="outline: medium none;" hidefocus="true" href="#"><span><i></i>entraí com o teu facebook se quiser</span></a></div>
+		</form>
+	</div>
+</div>
+<div class="col-sm-6">
+	<div class="service_list service_list_2">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="service_item boxed no-radius">
+					<div class="inner">
+						<div class="service_img"><img src="images/icons/service-icon-4.png" alt=""></div>
+						<div class="service_title"><h2><a style="outline: medium none;" hidefocus="true" href="#">dúvidas?</a></h2></div>
+						<div class="service_desc">
+							<p>temos uma ótima equipe pronta para te ajudar :) <a href="#">veja as formas de contato</a></p>
+						</div>
+						<div class="service_meta_bot"><a style="outline: medium none;" hidefocus="true" href="#" class="link-more">Related works</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="service_item boxed no-radius blue">
+					<div class="inner">
+						<div class="service_img"><img src="images/icons/service-icon-7.png" alt=""></div>
+						<div class="service_title"><h2><a style="outline: medium none;" hidefocus="true" href="#">medo?</a></h2></div>
+						<div class="service_desc">
+							<p>guardamos suas informações com muito carinho e cuidado.</p>
+						</div>
+						<div class="service_meta_bot"><a style="outline: medium none;" hidefocus="true" href="#" class="link-more">Related works</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="service_item boxed no-radius green">
+					<div class="inner">
+						<div class="service_img"><img src="images/icons/service-icon-9.png" alt=""></div>
+						<div class="service_title"><h2><a style="outline: medium none;" hidefocus="true" href="#">acompanhe!</a></h2></div>
+						<div class="service_desc">
+							<p>temos um resumão em tempo real do seu pedido, detalhadíssimo.</p>
+						</div>
+						<div class="service_meta_bot"><a style="outline: medium none;" hidefocus="true" href="#" class="link-more">Related works</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="service_item boxed no-radius red">
+					<div class="inner">
+						<div class="service_img"><img src="images/icons/service-icon-5.png" alt=""></div>
+						<div class="service_title"><h2><a style="outline: medium none;" hidefocus="true" href="#">eficácia</a></h2></div>
+						<div class="service_desc">
+							<p>alcançamos rapidamente seus resultados planejados.</p>
+						</div>
+						<div class="service_meta_bot"><a style="outline: medium none;" hidefocus="true" href="#" class="link-more">Related works</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

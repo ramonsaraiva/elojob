@@ -5,6 +5,29 @@
 
 module.exports = function(app, models) {
 
+	app.post('/auth/', function(req, res) {
+		models.user.find({
+			where: { email: req.body.username,
+					 password: req.body.password }
+		})
+		.on('success', function(record) {
+			if (!record)
+			{
+				res.sendStatus(404);
+			}
+			else
+			{
+				res.json(record);
+			}
+		})
+		.on('failure', function(e) {
+			res.status(401).send(e);
+		})
+		.on('error', function(e) {
+			res.status(401).send(e);
+		});
+	});
+
 	app.use(function(req, res, next) {
 		var auth;
 
@@ -18,7 +41,7 @@ module.exports = function(app, models) {
 		}
 
 		models.usuarios.find({
-			where: { login: auth[0] }
+			where: { email: auth[0] }
 		})
 		.on('success', function(user) {
 			if (!user)
@@ -41,4 +64,5 @@ module.exports = function(app, models) {
 			res.sendStatus(500);
 		});
 	});
+
 }

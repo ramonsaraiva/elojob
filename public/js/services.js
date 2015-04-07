@@ -54,7 +54,7 @@ services.factory('AuthenticationService',
         service.Login = function (username, password, callback) {
 
             /* Dummy authentication for testing, uses $timeout to simulate api call
-             ----------------------------------------------*/
+             ----------------------------------------------
             $timeout(function(){
                 var response = { success: username === 'admin' && password === 'admin' };
                 if(!response.success) {
@@ -62,15 +62,18 @@ services.factory('AuthenticationService',
                 }
                 callback(response);
             }, 1000);
+			*/
 
 
-            /* Use this for real authentication
-             ----------------------------------------------*/
-            //$http.post('/api/authenticate', { username: username, password: password })
-            //    .success(function (response) {
-            //        callback(response);
-            //    });
-
+            $http.post('/auth/', { username: username, password: password })
+                .success(function (response) {
+					var res = { success: true, record: response };
+                    callback(res);
+				})
+				.error(function(response) {
+					var res = { success: false };
+					callback(res);
+				});
         };
  
         service.SetCredentials = function (username, password) {

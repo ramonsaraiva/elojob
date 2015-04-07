@@ -8,7 +8,7 @@ var models = require('../models');
 models.sequelize.sync({force: true})
 .on('success', function() {
 	console.log('Success.');
-	models.usuarios.create({ login: 'admin', senha: 'admin', nome: 'Administrador'}).then(function(user) {
+	models.user.create({ email: 'admin@admin.com', password: 'admin'}).then(function(user) {
 		console.log('User ' + user.nome + ' created.');
 	});
 })
